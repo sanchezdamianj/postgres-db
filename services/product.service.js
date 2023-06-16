@@ -29,12 +29,12 @@ class ProductsService {
     return data;
   }
   async delete(id) {
-    const index = this.products.findIndex((item) => item.id === id);
-    if (index === -1) {
+    const index = await models.Product.findOne(id)
+    if (!index) {
       throw boom.notFound('product not found');
     }
-    this.products.splice(index, 1);
-    return { id };
+    index.destroy()
+    return `product id: ${id} deleted`;
   }
 }
 

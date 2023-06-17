@@ -33,6 +33,18 @@ const OrderSchema = {
     type: Sequelize.DATE,
     field: 'updated_at',
     defaultValue: Sequelize.NOW
+  },
+  // just for small amounts by node, if not by sql
+  totalAmount: {
+    type: Sequelize.VIRTUAL,
+    get(){
+      if(this.items.length > 0) {
+        return this.items.reduce((totalAmount, item) => {
+          return totalAmount + (item.price * item.OrderProduct.amount)
+        },0)
+      }
+      return 0;
+    }
   }
 }
 

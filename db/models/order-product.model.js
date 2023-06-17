@@ -18,6 +18,12 @@ const OrderProductSchema = {
     field: 'created_at',
     defaultValue: Sequelize.NOW
   },
+  updatedAt: {
+    allowNullL: false,
+    type: Sequelize.DATE,
+    field: 'updated_at',
+    defaultValue: Sequelize.NOW
+  },
   amount: {
     allowNull:false,
     type: Sequelize.INTEGER,

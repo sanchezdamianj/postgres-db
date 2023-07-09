@@ -10,8 +10,7 @@ const created_at = Joi.string().min(5);
 const limit = Joi.number().integer()
 const offset = Joi.number().integer()
 const price_min = Joi.number().integer().min(0);
-const price_max = Joi.number().integer();
-
+const price_max = Joi.number().integer()
 
 const createProductSchema = Joi.object({
   name: name.required(),
